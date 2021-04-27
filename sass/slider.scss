@@ -1,0 +1,144 @@
+/* Animations */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.slider {
+  display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  position: relative;
+  &__item {
+    display: none;
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    &--animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+    &--active {
+      display: block;
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
+  }
+  &__blue-square {
+    position: absolute;
+    background-color: $primary-blue-color;
+    top: 0;
+    left: -100px;
+    width: 50%;
+    height: 100%;
+    opacity: 0.7;
+    transform: skew(-10deg, 0deg);
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__info-left {
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    transform: translate(-12%, -50%);
+    &_h2 {
+      font-size: 50px;
+      color: #fff;
+      width: 270px;
+      margin-bottom: 15px;
+    }
+    &_button {
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      padding: 7px 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
+  &__buttons {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transform: translate(-50%, -10%);
+  }
+  &__bullets {
+    background-color: $third-blue-color;
+    width: 15px;
+    height: 15px;
+    display: block;
+    cursor: pointer;
+    border-radius: 50%;
+    &--active {
+      background-color: $secondary-blue-color;
+    }
+  }
+  &__social-networks {
+    position: absolute;
+    bottom: 8%;
+    right: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-links {
+      margin-bottom: 10px;
+      &-icons {
+        width: 45px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .slider {
+    height: 400px;
+    &__blue-square {
+      left: -50px;
+      width: 80%;
+    }
+    &__info-left {
+      left: 20%;
+      transform: translate(-25%, -50%);
+      &_h2 {
+        font-size: 30px;
+        width: 180px;
+      }
+      &_button {
+        font-size: 16px;
+      }
+    }
+    &__social-networks {
+      bottom: 6%;
+      &-links {
+        &-icons {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
